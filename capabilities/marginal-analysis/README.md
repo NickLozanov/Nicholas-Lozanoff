@@ -1,8 +1,8 @@
 # Marginal Analysis
 
-This folder holds work for the "marginal analysis" capability.
+This folder holds the marginal-analysis capability: evaluating the incremental cost or benefit of one additional unit of scope, so a decision can be made about whether the next increment is worth taking on.
 
-- `spec.md` — what this capability is meant to do
-- Add your model/workbook file here once you build it
+- `spec.md` — the capability's inputs, method, and expected output, defined before the workbook was built
+- `model.xlsx` — the workbook implementing the spec
 
-Replace this placeholder with a real description once you start this capability.
+`spec.md` and `model.xlsx` are both still placeholders — see `docs/briefs/` for the engagement brief that should be written before either is filled in, and `docs/decisions/` for the recommendation once the capability is complete.
