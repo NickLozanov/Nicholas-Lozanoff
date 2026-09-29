@@ -59,3 +59,23 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
 | 8 | **The falsification test is present but can't pass.** "Different than 14 tomato beds" is a clear threshold tied to a model output, which the review asked for. But since 14/30/20 is over the labor ceiling, the Solver cannot return it, so the test is failed before the model runs. A one-sided threshold ("fewer than N" or "more than N") would test the reasoning rather than the exact number. | Pending — my decision. |
 | 9 | **Voice is still from outside.** "It is acknowledged that…", "an optimization exercise must be completed", "we need to". The review asked for it to be written as the one deciding. | Pending — my decision. |
 | 10 | **Typos.** "can company health" (a missing verb — "can harm"?), "a conceptual a predictive analysis", "Carrots. secondly" (lowercase), "Carrots beds". | Pending — my decision. |
+
+## 2026-09-29 — Final Stage 1 critique before submission
+- Edits since the second critique, all my own wording, pasted in by the AI: added "fixed costs of $20,000 (fix cost total of the firm)" to the problem statement, removed "roughly," and rewrote the final hypothesis paragraph, bolding the falsification sentence.
+
+**Prompt:** same as the second critique, run on the brief as submitted.
+
+**What came back, and what I did about each point:**
+
+| # | Critique point | What I did |
+|---|---|---|
+| 1 | **The predicted mix still breaks the labor ceiling.** 14 T / 30 M / 20 C needs ≈ 7,727 hrs against 6,480 available. Any mix that fills all 64 beds needs at least 14 tomato beds and is over the ceiling, so the "100% of beds are used" assumption can't hold. | Left as is. This is my prediction going in; where the model disagrees is for Stage 1.3. |
+| 2 | **The falsification test is clear but already failed.** The bolded sentence ties the hypothesis to a model output, as the review asked. Because 14/30/20 is infeasible, the Solver cannot return 14 tomato beds. | Left as is. |
+| 3 | **Fixed costs can't move the tomato count.** The final paragraph says fixed seasonal costs might force fewer tomato beds. The $20,000 is paid whatever is planted, so it changes whether the season is profitable, not which bed is worth adding. Only labor, fertilizer and revenue act at the margin. | Left as is. |
+| 4 | **Hours are written as dollars.** "$6,480 ($720 staff + $5,760 temporary)" are labor hours; in dollars the temps alone cost ≈ $99,994. | Left as is. |
+| 5 | **Two objectives.** "Greatest financial returns" and "maximize the number of productive beds" can disagree; the model will maximize season profit. | Left as is. |
+| 6 | **The tomato bullet still doesn't apply the "productive bed" test.** Tomatoes get "the remaining 14 beds" rather than a stopping point where the next tomato bed's added labor exceeds its $7,920 revenue after fertilizer. | Left as is. |
+| 7 | **Improved since the first review:** "roughly" is gone, the $20,000 fixed cost is in the problem statement, mesclun and carrots are argued bed by bed through the labor equation, and the final paragraph reads clearly. | No change needed. |
+| 8 | **Voice and typos.** Still partly written from outside ("It is acknowledged…", "we need to"). Typos: "fix cost," "can company health" (missing verb), "Carrots. secondly," "Carrots beds," "14 tomatoes beds." | Left as is. |
+
+- Submitted the brief for review as it stands.
