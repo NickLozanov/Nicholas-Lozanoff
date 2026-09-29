@@ -4,13 +4,27 @@
 
 ## The Problem
 
-A farm must determine how many of its available grow beds it should dedicate to each type of crop including carrots, mesclun, and tomatoes in order to maximize financial productivity of the farm. This must be optimized so that operation as a whole will yield the greatest financial returns measurable in several accounting terms such as profit margin and total revenue for the 36-week season.
+I am deciding how many of the farm's 64 grow beds to plant in tomatoes, carrots, and mesclun so that the farm earns the greatest profit over the 36-week season.
 
-The available bed caps include 20 beds, 20 beds, and 30 beds for tomatoes, carrots, and mesclun respectively. It is acknowledged that while the bed caps sum to 70, there are only 64 beds available, thus an optimization exercise must be completed to establish how many beds shall be dedicated to each type of crop. Each have an associated predicted revenue per bed, expenses including field hours per week per bed, and fertilizer costs per bed. Finally, an accepted rate of diminishing returns has been established for each crop type.
+Each crop has a bed cap: 20 beds of tomatoes, 20 beds of carrots, and 30 beds of mesclun. The caps sum to 70, but only 64 beds are available, so I cannot plant every crop to its cap and have to choose where each bed goes.
+
+| Crop | Bed cap | Revenue / bed | Field hrs / wk / bed | Fertilizer / bed | Diminishing-returns rate |
+|---|---|---|---|---|---|
+| Tomatoes | 20 | $8,800 | 2.5 | $880 | 10% |
+| Carrots | 20 | $2,094 | 0.833 | $440 | 2.5% |
+| Mesclun | 30 | $2,700 | 1.25 | $880 | 1.25% |
+
+The season carries **$20,000 in fixed costs**, whatever mix I plant.
+
+Labor is the second constraint. The labor a crop needs depends on how many beds of that crop I plant:
+
+**Labor(q) = q × hrs/wk/bed × 36 × (1 + rate)^q**, where q is the number of beds of that crop.
+
+I have **720 hours** of my own field time (an implied $34.72/hr) and can hire **up to 4 temporary workers** at $17.36/hr for 1,440 hours each. That puts a **ceiling of 6,480 labor hours** on the season (720 + 4 × 1,440), shared across all three crops.
 
 ## Hypothesis
 
-It is expected that the optimal mix of beds will be roughly **15 tomatoes, 30 mesclun, and 19 carrots**.
+It is expected that the optimal mix of beds will be **15 tomatoes, 30 mesclun, and 19 carrots**.
 
 - **Tomatoes** – This hypothesis assumes firstly, this bed allocation will maximum revenue at the start of the season driven by the revenue per bed income of tomatoes.
 - **Mesclun** – Secondly, by utilizing all 30 available beds of mesclun, the farm can capitalize on the low diminishing returns rate of this crop. This strategy will allow for increased revenue per bed at the back end of the 36-week season. In this case, mesclun will act as a financial "damper" to the effect of tomatoes' large diminishing returns rate in the latter half of the season.
