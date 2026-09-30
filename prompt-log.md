@@ -79,3 +79,8 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
 | 8 | **Voice and typos.** Still partly written from outside ("It is acknowledged…", "we need to"). Typos: "fix cost," "can company health" (missing verb), "Carrots. secondly," "Carrots beds," "14 tomatoes beds." | Left as is. |
 
 - Submitted the brief for review as it stands.
+
+## 2026-09-30 — Revised hypothesis (12 / 30 / 20)
+- After the final critique showed 14 / 30 / 20 was over the 6,480-hr labor ceiling, I asked the AI how many tomato beds fit under that limit. It calculated the tomato labor for each bed count (12 beds = 3,390 hrs; 13 beds = 4,039 hrs) and the most tomato beds that fit alongside different mesclun/carrot counts (12 with 30 mesclun and 20 carrots).
+- Using those numbers, I rewrote the hypothesis myself: 12 tomatoes, 30 mesclun, 20 carrots, with 2 beds left unused. I also corrected the labor ceiling from dollars to hours and added a "How I will Know I was wrong" section with a band of 12 ± 2 tomato beds.
+- The AI pasted my text into the brief word for word. The only formatting was Markdown headings, bullets, and bolding the falsification sentence.
