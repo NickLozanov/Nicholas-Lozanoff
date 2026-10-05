@@ -84,3 +84,29 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
 - After the final critique showed 14 / 30 / 20 was over the 6,480-hr labor ceiling, I asked the AI how many tomato beds fit under that limit. It calculated the tomato labor for each bed count (12 beds = 3,390 hrs; 13 beds = 4,039 hrs) and the most tomato beds that fit alongside different mesclun/carrot counts (12 with 30 mesclun and 20 carrots).
 - Using those numbers, I rewrote the hypothesis myself: 12 tomatoes, 30 mesclun, 20 carrots, with 2 beds left unused. I also corrected the labor ceiling from dollars to hours and added a "How I will Know I was wrong" section with a band of 12 ± 2 tomato beds.
 - The AI pasted my text into the brief word for word. The only formatting was Markdown headings, bullets, and bolding the falsification sentence.
+
+## 2026-10-05 — Built the marginal-analysis workbook from my spec
+**Prompt:** "Read my spec at capabilities/marginal-analysis/spec.md. Build the workbook it specifies exactly: every input a named range with the stated unit, every calculated cell a formula (no pasted values), the validation rules computed in the workbook, and the published check figures treated as acceptance criteria. Save it as capabilities/marginal-analysis/model.xlsx. If anything in the spec is ambiguous, ask me questions before you build."
+
+**Questions the AI asked before building, and my answers:**
+
+| # | Ambiguity in the spec | My decision |
+|---|---|---|
+| 1 | The labor formula is written as (1 − DIM_RTRN)^q, but the text says each added bed should *increase* labor, which needs (1 + DIM_RTRN)^q. (1 + ) gives 10 / 20 / 30; (1 − ) gives 20 / 20 / 24. | Use (1 + DIM_RTRN)^q. |
+| 2 | The check-sheet section says the optimum is 10 T / 20 C / 30 M; "Expected Outputs" says 12 / 20 / 30, which earns $40,298 against $42,775 for 10 / 20 / 30. | 10 / 20 / 30 is the acceptance criterion. 12 / 20 / 30 is shown on the Checks sheet for reconciliation only. |
+| 3 | The spec formulas give $42,775.16 at 10 / 20 / 30, not the published $42,762 (+$13.16). Carrot hours of exactly 5/6 instead of 0.833 give $42,768.33, which still misses. | Pass the profit check within ± $25. |
+| 4 | The published standalone P = MC points (~10 / ~10 / ~6) only come out if tomatoes use the temporary rate ($17.36/hr) and carrots and mesclun the permanent rate ($34.72/hr). | Show both rates; each check passes if either rate is within ± 1 bed. |
+
+**Changes the AI made without asking (listed on the workbook's README sheet):**
+- Bed-cap constraints are written "≥ cap" in the spec; built as "≤ cap".
+- Excel names cannot contain % or spaces: `*_DIM_RTRN_%` → `*_DIM_RTRN_PCT`, `TEMP_HOURS_LABOR_PER WORKER` → `TEMP_HOURS_LABOR_PER_WORKER`. Typos `TOTAL_RETILIZER` and `SEASON_PROFIT` read as `TOTAL_FERTILIZER` and `SEASONAL_PROFIT`.
+- No new model inputs were added. The only added constants are the two check tolerances on the Checks sheet.
+
+**What came back:**
+- `model.xlsx` with Summary, Inputs, Cost Structure, Marginal Cost (with price-vs-MC charts), Optimization, Enumeration and Checks sheets. Every calculation is a formula on named ranges; the Enumeration sheet evaluates every integer mix as a check that does not depend on Solver.
+- Result: 10 tomato / 20 carrot / 30 mesclun beds, seasonal profit $42,775.16. Carrot and mesclun bed caps are binding; tomatoes stop on marginal cost (an 11th bed adds ≈ 490 labor hours and lowers profit by ≈ $590). 4 beds and ≈ 1,203 labor hours are unused.
+- The AI recalculated the workbook in LibreOffice: 45 checks pass, 0 fail, 1 info row (the 12 / 20 / 30 reconciliation). It also entered a deliberately wrong mix to confirm the checks fail.
+
+**Not yet done (me):**
+- Solver was not run; the AI could not run Excel. The decision cells hold 10 / 20 / 30 from the Enumeration sheet. I still need to run Solver (GRG Nonlinear, integer) in Excel and confirm it returns the same mix.
+- Review the workbook myself before relying on it, and update `capabilities/marginal-analysis/README.md`, which still calls the spec and model placeholders.
