@@ -6,6 +6,7 @@ The farm must choose integer quantities of tomato, carrot, and mesclun grow beds
 
 # Inputs
 Every input shall exist as a named input/range or equivalent named parameter in the workbook. The model shall not encode these values only inside formulas. The model shall expose them in an inputs region so a reviewer can change a case assumption without editing formulas. Inputs are as follows and are separated into names of inputs, value of input, and unit of input:
+
 name = TOMATO_BED_CAP, quantity = 20, unit = beds
 name = CARROT_BED_CAP, quantity = 20, unit = beds
 name = MESCLUN_BED_CAP, quantity = 30, unit = beds
@@ -29,8 +30,19 @@ name = TEMP_WORKER_CAP, quantity = 4, unit = workers
 name = TEMP_HOURS_LABOR_PER WORKER, quantity = 1440, unit = hours/worker/season
 name = TEMP_HOURLY_RATE, quantity = 17.36, unit = $/hour
 name = FIXED_SEASON_COST, quantity = 20000, unit = $/season
-
-
+Derived inputs include the following: TEMP_HOURS_CAP = TEMP_HOURS_LABOR_PER WORKER X TEMP_WORKER_CAP = 5760 hours
+TOTAL_LABOR_HOURS_CAP = 5760 hours + PERMANENT_FIELD_LABOR_HOURS = 6480 HOURS.
+# Workbook Structure
+The workbook shall be structured in the following mannar:
+Inputs: named case inputs, units, source labels, and editable assumptions as listed above in the inputs section. 
+Cost Structure: For the current bed mix: beds, revenue, fertilizer, crop labor hours, total labor hours, permanent/temporary labor allocation, labor dollars, total costs, and profit
+Marginal cost schedules: integer q=0 through each crop's bed cap. show labor hours, labor dollars, fertilizer, marginal labor hours, marginal labor cost, and marginal total cost. Include standalone P = MC diagnostics for each crop. 
+Optimization: Decision cells for the three integer bed counts, objective/profit, constraints, solver-ready formulas, and the optimized solution. If any decision recommendations are included here, highlight them for the reviewer's clarity and ease of navication.
+Checks: Acceptance tests, constraint checks, formula/error checks, hand-calculation check, and reconciliation to the published test suite. 
+Read me / spec: sort description of the model, conventions, formula definitions, and solver settings so a reviewer can audit the workbook without opening the source code. 
+# Calculation Logic
+For each crop and bed quanitity q, labor must be calculated exactly as follows: LABOR_HOURS (q) = q X HOURS_PER_WEEK_PER_BED X SEASON_WEEKS X (1-DIM_RTN)^q.
+The exponent is part of the case model. Do not linearize it. Do not replace it with q X HOURS_PER_BED X WEEKS. the (1+DIM_PCT)^q term means that adding a bed increase the labor requirement associated with each additional bed of that crop. for q=0, LABOR_HRS(0) must equal 0. Each crop must use its own hours per week per bed and diminishing returns percentage. 
 
 
 
