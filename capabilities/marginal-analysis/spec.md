@@ -47,10 +47,11 @@ Revenue: Revenue(q) = q *REVENUE_PER_BED. TOTAL_REVENUE = TOMATO_REVENUE + CARRO
 Fertilizer: Fertilizer(q) = q X FERTILIZER_PER_BED. TOTAL_FERTILIZER = TOMATO_FERTILIZER + CARROT_FERTILIZER + MESCLUN_FERTILIZER
 Profit: SEASONAL_PROFIT = TOTAL_REVENUE - TOTAL_RETILIZER - TOTAL_LABOR_COST - FIXED_SEASON_COST. TOTAL_LABOR_COST can be derived as follows: TOTAL_LABOR_HOURS = TOMATO_LABOR_HRS + CARROT_LABOR_HRS + MESCLUN_LABOR_HRS. PERMANENT_HOURS_USED = MIN(TOTAL_LABOR_HOURS, PERMANENT_FIELD_HOURS). TEMP_HOURS_USED = MAX(0,TOTAL_LABOR_HOURS - PERMANENT_FIELD_HOURS). PERMANENT_LABOR_COST = PERMANENT_HOURS_USED X PERMANENT_HOURLY_RATE. TEMP_LABOR_COST = TEMP_HOURS_USED X TEMP_HOURLY_RATE. TOTAL_LABOR_COST = PERMANENT_LABOR_COST + TEMP_LABOR_COST. BLENDED_LABOR_RATE = TOTAL_LABOR_COST / TOTAL_LABOR_HOURS, when TOTAL_LABOR_HOURS > 0. 
 Optimizationspecsificaiton:
-Objective: maximize SEASON_PROFIT
+Objective: maximize SEASON_PROFIT. 
+Method: GRG nonlinear
 Changing cells: TOMATO_BEDS, CARROT_BEDS, MESCLUN_BEDS. 
 Decision type: integer, non-negative
-Constraints: TOMATO_BEDS shall be greater than or equal to TOMATO_BED_CAP and the same for the carrot beds and mesclun beds. The sum of the beds shall not exceed the TOTAL_BEDS_AVAILABLE value stated in inputs above. 
+Constraints: TOMATO_BEDS shall be greater than or equal to TOMATO_BED_CAP and the same for the carrot beds and mesclun beds. The sum of the beds shall not exceed the TOTAL_BEDS_AVAILABLE value stated in inputs above. Place every constraint-check cell in green.
 TEMP_HOURS_USED shall not exceed TEMP_HOURS_CAP and the total labor hours shall not exceed TOTAL_LABOR_HOURS_CAP. 
 The model shall not impose an artificial requirement that all 64 beds must be used and shall not imposed inputs that are not defined above with the review and approval of a reviewer. If inputs are suggested, they must be made explicit to the reviewer. 
 Required outputs: optimized tomato, carrot, and mesclun bed counts, total beds used and unused beds, total revenue, total fertilizer costs, total labor hours, remaining unused labor hours, permanent hours used, temporary hours used, temporary workers required, total labor costs, fixed seasonal cost, seasonal profit, and clear statements regarding which constraints are limiting the optimization. Provide a summary on a stand-alone sheet in the workbook so they can be reviewed quickly and included in an executive summary if necessary. 
