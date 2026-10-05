@@ -109,4 +109,5 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
 
 **Not yet done (me):**
 - Solver was not run; the AI could not run Excel. The decision cells hold 10 / 20 / 30 from the Enumeration sheet. I still need to run Solver (GRG Nonlinear, integer) in Excel and confirm it returns the same mix.
-- Review the workbook myself before relying on it, and update `capabilities/marginal-analysis/README.md`, which still calls the spec and model placeholders.
+- Review the workbook myself before relying on it.
+- Follow-up in the same session: the downloaded workbook first opened blank in Excel (formulas only, no saved results, and Protected View does not recalculate). The AI saved the calculated values into the file, replaced the "placeholders" line in `capabilities/marginal-analysis/README.md`, and merged the work into `main` so it is public for grading.
