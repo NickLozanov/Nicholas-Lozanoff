@@ -6,29 +6,32 @@ The farm must choose integer quantities of tomato, carrot, and mesclun grow beds
 # Inputs
 Every input shall exist as a named input/range or equivalent named parameter in the workbook. The model shall not encode these values only inside formulas. The model shall expose them in an inputs region so a reviewer can change a case assumption without editing formulas. Inputs are as follows and are separated into names of inputs, value of input, and unit of input:
 
-name = TOMATO_BED_CAP, quantity = 20, unit = beds
-name = CARROT_BED_CAP, quantity = 20, unit = beds
-name = MESCLUN_BED_CAP, quantity = 30, unit = beds
-name = TOMATO_REVENUE_PER_BED, quantity = 8800, unit = $/bed/season
-name = CARROT_REVENUE_PER_BED, quantity = 2094, unit = $/bed/season
-name = MESCLUN_REVENUE_PER_BED, quantity = 2700, unit = $/bed/season
-name = TOMATO_HRS_PER_WEEK_PER_BED, quantity = 2.5, unit = hour/week/bed
-name = CARROT_HRS_PER_WEEK_PER_BED, quantity = 0.833, unit = hour/week/bed
-name = MESCLUN_HRS_PER_WEEK_PER_BED, quantity = 1.25, unit = hour/week/bed
-name = TOMATO_FERTILIZER_PER_BED, quantity = 880, unit = $/BED/SEASON
-name = CARROT_FERTILIZER_PER_BED, quantity = 440, unit = $/BED/SEASON
-name = MESCLUN_FERTILIZER_PER_BED, quantity = 880, unit = $/BED/SEASON
-name = TOMATO_DIM_RTRN_%, quantity = 10, unit = %
-name = CARROT_DIM_RTRN_%, quantity = 2.5, unit = %
-name = MESCLUN_DIM_RTRN_%, quantity = 1.25, unit = %
-name = SEASON_WEEKS, quantity = 36, unit = weeks
-name = TOTAL_BEDS_AVAILABLE, quantity = 64, unit = beds
-name = PERMANENT_FIELD_LABOR_HOURS, quantity = 720, unit = hours/season
-name = PERMANENT_HOURLY_RATE, quantity = 34.72, unit = $/hour
-name = TEMP_WORKER_CAP, quantity = 4, unit = workers
-name = TEMP_HOURS_LABOR_PER WORKER, quantity = 1440, unit = hours/worker/season
-name = TEMP_HOURLY_RATE, quantity = 17.36, unit = $/hour
-name = FIXED_SEASON_COST, quantity = 20000, unit = $/season
+| Name | Value | Unit |
+|---|---|---|
+| TOMATO_BED_CAP | 20 | beds | 
+| CARROT_BED_CAP | 20 | beds | 
+| MESCLUN_BED_CAP | 30 | beds | 
+| TOMATO_REVENUE_PER_BED | 8800 | $/bed/season | 
+| CARROT_REVENUE_PER_BED | 2094 | $/bed/season | 
+| MESCLUN_REVENUE_PER_BED | 2700 | $/bed/season | 
+| TOMATO_HRS_PER_WEEK_PER_BED | 2.5 | hour/week/bed | 
+| CARROT_HRS_PER_WEEK_PER_BED | 0.833 | hour/week/bed | 
+| MESCLUN_HRS_PER_WEEK_PER_BED | 1.25 | hour/week/bed | 
+| TOMATO_FERTILIZER_PER_BED | 880 | $/BED/SEASON | 
+| CARROT_FERTILIZER_PER_BED | 440 | $/BED/SEASON | 
+| MESCLUN_FERTILIZER_PER_BED | 880 | $/BED/SEASON | 
+| TOMATO_DIM_RTRN_% | 10 | % | 
+| CARROT_DIM_RTRN_% | 2.5 | % | 
+| MESCLUN_DIM_RTRN_% | 1.25 | % | 
+| SEASON_WEEKS | 36 | weeks | 
+| TOTAL_BEDS_AVAILABLE | 64 | beds | 
+| PERMANENT_FIELD_LABOR_HOURS | 720 | hours/season | 
+| PERMANENT_HOURLY_RATE | 34.72 | $/hour | 
+| TEMP_WORKER_CAP | 4 | workers | 
+| TEMP_HOURS_LABOR_PER WORKER | 1440 | hours/worker/season | 
+| TEMP_HOURLY_RATE | 17.36 | $/hour | 
+| FIXED_SEASON_COST | 20000 | $/season | 
+
 Derived inputs include the following: TEMP_HOURS_CAP = TEMP_HOURS_LABOR_PER WORKER X TEMP_WORKER_CAP = 5760 hours
 TOTAL_LABOR_HOURS_CAP = 5760 hours + PERMANENT_FIELD_LABOR_HOURS = 6480 HOURS.
 # Workbook Structure
