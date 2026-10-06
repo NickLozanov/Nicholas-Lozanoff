@@ -32,8 +32,14 @@ Every input shall exist as a named input/range or equivalent named parameter in 
 | TEMP_HOURLY_RATE | 17.36 | $/hour | 
 | FIXED_SEASON_COST | 20000 | $/season | 
 
-Derived inputs include the following: TEMP_HOURS_CAP = TEMP_HOURS_LABOR_PER WORKER X TEMP_WORKER_CAP = 5760 hours
-TOTAL_LABOR_HOURS_CAP = 5760 hours + PERMANENT_FIELD_LABOR_HOURS = 6480 HOURS.
+Derived inputs include the following: 
+
+| Name | Equation | Value |
+|---|---|---|
+
+| TEMP_HOURS_CAP | = TEMP_HOURS_LABOR_PER WORKER X TEMP_WORKER_CAP | 5760 hours | 
+| TOTAL_LABOR_HOURS_CAP | 5760 hours + PERMANENT_FIELD_LABOR_HOURS | 6480 HOURS | 
+
 # Workbook Structure
 The workbook shall be structured in the following mannar:
 Inputs: named case inputs, units, source labels, and editable assumptions as listed above in the inputs section. 
