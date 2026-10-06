@@ -37,7 +37,7 @@ Derived inputs include the following:
 | Name | Equation | Value |
 |---|---|---|
 | TEMP_HOURS_CAP | = TEMP_HOURS_LABOR_PER WORKER X TEMP_WORKER_CAP | 5760 hours | 
-| TOTAL_LABOR_HOURS_CAP | 5760 hours + PERMANENT_FIELD_LABOR_HOURS | 6480 HOURS | 
+| TOTAL_LABOR_HOURS_CAP | = 5760 hours + PERMANENT_FIELD_LABOR_HOURS | 6480 HOURS | 
 
 # Workbook Structure
 The workbook shall be structured in the following mannar:
