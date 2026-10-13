@@ -191,19 +191,19 @@ Decision. Keep the single-rate schedules, because they reproduce the published P
 
 Hand check at q = 1 (V4)
 
-What I did: I calculated 2.5*36*1.10 on a calculator which = 99. Then at 1/0/0 bed count I calculated 8,800 − 880 − (tomato hours × 34.72) − 20,000, where tomato hours = 99. This yielded -$15517.28. This is because the bed itself earns $4,482.72 but the 20K fixed cost is paid no matter how much is planted and one bed doesn't cover it. That's why the farm needs many beds: 10/20/30.
+What I did: I calculated 2.5*36*1.10 on a calculator which = 99. Then at 1/0/0 bed count I calculated 8,800 − 880 − (tomato hours × 34.72) − 20,000, where tomato hours = 99. This yielded negative $15517.28. This is because the bed itself earns $4,482.72 but the 20K fixed cost is paid no matter how much is planted and one bed doesn't cover it. That's why the farm needs many beds: 10/20/30.
 
-Result. Tomato [99 ] hours, carrot [30.74 ] hours, mesclun [45.56] hours; profit at 1 / 0 / 0 $[-15517.28 ]. The workbook shows for 1/0/0 [ 99], [0 ], [0 ] and $[-15,517.28 ]. 
+Result. Tomato [99 ] hours, carrot [30.74 ] hours, mesclun [45.56] hours; profit at 1 / 0 / 0 $-15517.28. The workbook shows for 1/0/0 [ 99], [0 ], [0 ] and $[-15,517.28 ]. 
 
 
-## A10. Solver from two starting mixes (V5)
+## Solver from two starting mixes (V5)
 
 What I did. Ran Excel Solver (GRG Nonlinear, integer, Integer Optimality 0%) on [10/13/2026] from 0 / 0 / 0 and from 20 / 0 / 0.
 
 Result. From 0 / 0 / 0: returned: 10/20/30, $42775.16, Solver's message: "Solver found a solution". From 20 / 0 / 0: returned 10/20/30, $42775.16, solvers message: "solver found a solution". Started at 20/0/0 (profit about −$84,300, breaks the labor limit at about 12,110 hours); Solver returned 10/20/30.
 
 
-## A11. Farm Profit Lab cross-check (V6)
+## Farm Profit Lab cross-check (V6)
 
 What I did. Entered 10 / 20 / 30 into the Farm Profit Lab (farmlab.html) on 10/13/2026.
 
