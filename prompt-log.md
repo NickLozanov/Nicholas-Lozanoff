@@ -120,5 +120,5 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
   - **Cost Structure and Summary:** added labor cost and contribution by crop at the blended rate, with check L1 confirming they sum to total labor cost.
   - **Inputs and README sheets:** notes on the three rounded inputs, updated formula definitions, and the list of spec defects marked as now corrected in `spec.md`.
 - The AI recalculated the workbook in LibreOffice: 0 formula errors; 49 checks pass, 0 fail, 3 pending (the two Solver runs and the Lab), 4 info.
-- The AI found an error in audit finding A1, which it had drafted: marginal cost, priced permanent hours first, falls once for tomatoes but over two beds for carrots (beds 17–18) and mesclun (beds 14–15). The spec text still needs correcting.
+- The AI found an error in audit finding A1, which it had drafted: marginal cost, priced permanent hours first, falls once for tomatoes but over two beds for carrots (beds 17–18) and mesclun (beds 14–15). I corrected A1 and A3 in the spec, and replaced their references to Checks row numbers with descriptions of the checks.
 - **Not yet done (me):** run Solver twice and the Farm Profit Lab check, record the results on the Checks sheet, do the q = 1 hand check and the wrong-mix test myself, write audit findings A4–A11, and update the README sheet's Solver note.
