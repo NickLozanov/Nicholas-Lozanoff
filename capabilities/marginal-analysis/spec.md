@@ -189,12 +189,47 @@ Decision. Keep PERMANENT_HOURLY_RATE at $34.72, TEMP_HOURLY_RATE at $17.36, and 
 ## A3. Decision: should the Marginal Cost sheet and its checks change?
 Decision. Keep the single-rate schedules, because they reproduce the published P = MC points that V3 tests. Change the heading on the Marginal Cost sheet from "marginal cost rises with q, so this is the crossing" to say that each single-rate schedule is priced at one labor rate, so its marginal cost rises with q, while the farm's actual labor cost uses permanent hours first (see Audit finding A1). Add a third schedule per crop, priced permanent hours first, for information only, so the fall in marginal cost where the 720 permanent hours run out is visible. Keep the Checks sheet's "marginal cost never falls" checks on the single-rate schedules only, and note on them that the permanent-hours-first schedule is expected to fall where the 720 permanent hours run out: once for tomatoes, over two beds for carrots and mesclun.
 
-Hand check at q = 1 (V4)
+## A4. Labor exponent written as (1 − DIM_RTRN)^q
+
+Issue. The labor formula read LABOR_HOURS(q) = q × HOURS_PER_WEEK_PER_BED × SEASON_WEEKS × (1 − DIM_RTRN)^q, while the next sentence said each added bed increases the labor required. The build session asked which was meant before building.
+
+Effect. With (1 − DIM_RTRN)^q each added bed needs less labor, and the optimum moves to 20 / 20 / 24. With (1 + DIM_RTRN)^q the optimum is 10 / 20 / 30, which matches the published check figures.
+
+Decision. Use (1 + DIM_RTRN)^q. The spec now writes it that way. V4 (bed 1 of tomatoes = 99 hours, against 81 with the minus sign) would catch the error if it came back.
+
+## A5. Two different expected mixes
+
+Issue. The check-sheet rule gave the optimum as 10 tomato / 20 carrot / 30 mesclun, while Expected Outputs said 12 / 20 / 30. The build session asked which was the acceptance figure.
+
+Effect. 12 / 20 / 30 is feasible but earns $40,298, against $42,775 for 10 / 20 / 30, so it cannot be the optimum.
+
+Decision. 10 / 20 / 30 is the acceptance figure (V1). 12 / 20 / 30 is the hypothesis in my perfect-competition brief, not an acceptance figure; the Checks sheet shows it for reconciliation only. Expected Outputs now names 10 / 20 / 30.
+
+## A6. Profit does not match the published $42,762
+
+Issue. The spec's formulas give $42,775.16 at 10 / 20 / 30, against the published $42,762 (+$13.16). During the build, carrot hours of exactly 5/6 were tested in place of 0.833; profit still missed ($42,768.33).
+
+Decision. Profit passes within ± $25 (V2, PROFIT_TOLERANCE). The cause of the gap is explained in A2: rounding of $34.72, $17.36 and 0.833.
+
+## A7. Which labor rate the standalone P = MC points use
+
+Issue. The published standalone P = MC points (tomatoes ~10, carrots ~10, mesclun ~6) do not come out at any single labor rate. They appear only when tomatoes are priced at the temporary rate ($17.36/hour) and carrots and mesclun at the permanent rate ($34.72/hour). The build session asked how to treat this.
+
+Decision. In the build, both rates were shown and each check passed if either rate was within ± 1 bed. The spec now defines MC_RATE per crop (tomatoes temporary, carrots and mesclun permanent), and V3 tests the points at MC_RATE only. A1 and A3 record how this differs from the permanent-hours-first labor cost that SEASONAL_PROFIT uses.
+
+## A8. Deliberately wrong mix
+
+What was done. During the build, a deliberately wrong bed mix was entered in the decision cells to confirm that the Checks sheet fails when the mix is not the optimum. The checks failed as expected. The mix used was not recorded in the prompt log.
+
+What it would have caught. It confirms the acceptance checks can fail: a check that always passes would not catch a wrong answer from Solver or an edited decision cell.
+
+# Hand check at q = 1 (V4)
 
 What I did: I calculated 2.5*36*1.10 on a calculator which = 99. Then at 1/0/0 bed count I calculated 8,800 − 880 − (tomato hours × 34.72) − 20,000, where tomato hours = 99. This yielded negative $15517.28. This is because the bed itself earns $4,482.72 but the 20K fixed cost is paid no matter how much is planted and one bed doesn't cover it. That's why the farm needs many beds: 10/20/30.
 
 Result. Tomato [99 ] hours, carrot [30.74 ] hours, mesclun [45.56] hours; profit at 1 / 0 / 0 $-15517.28. The workbook shows for 1/0/0 [ 99], [0 ], [0 ] and $[-15,517.28 ]. 
 
+What this would have caught: An error in the labor formula itself. If the exponent were (1 − DIM_RTRN)^q instead of (1 + DIM_RTRN)^q, bed 1 of tomatoes would need 2.5 × 36 × 0.90 = 81 hours instead of 99, and the check would fail. It would also catch a crop using the wrong hours per week or diminishing-returns rate, and, through the 1 / 0 / 0 profit, labor that was not priced at the permanent rate first or a fixed cost left out.
 
 ## Solver from two starting mixes (V5)
 
@@ -202,9 +237,12 @@ What I did. Ran Excel Solver (GRG Nonlinear, integer, Integer Optimality 0%) on 
 
 Result. From 0 / 0 / 0: returned: 10/20/30, $42775.16, Solver's message: "Solver found a solution". From 20 / 0 / 0: returned 10/20/30, $42775.16, solvers message: "solver found a solution". Started at 20/0/0 (profit about −$84,300, breaks the labor limit at about 12,110 hours); Solver returned 10/20/30.
 
+What it would have caught: A Solver result that depends on where it starts. GRG Nonlinear can stop at a mix that is only locally best, so getting 10 / 20 / 30 from both 0 / 0 / 0 and 20 / 0 / 0 (a start that breaks the labor limit) shows it is not stuck near its starting point. It would also catch wrong Solver settings, such as a missing constraint or integer requirement, and decision cells that were typed in rather than found by Solver. Both runs agree with the Enumeration sheet, which tries every integer mix.
 
 ## Farm Profit Lab cross-check (V6)
 
 What I did. Entered 10 / 20 / 30 into the Farm Profit Lab (farmlab.html) on 10/13/2026.
 
 Result. The Lab reports $42762.00; the workbook reports $42,775.16; difference $13.16. This fits the rounding explanation in A2.
+
+What it would have caught: A formula error in the workbook, such as a wrong labor allocation, a missing cost or a mistyped input, because the Lab calculates profit independently. A difference of more than $25 would have pointed to one. The actual difference, $13.16, is the same gap explained by rounding in A2, which suggests the Lab uses unrounded rates and carrot hours, and that the workbook's formulas are otherwise correct.
