@@ -180,3 +180,23 @@ Decision. Keep PERMANENT_HOURLY_RATE at $34.72, TEMP_HOURLY_RATE at $17.36, and 
 
 ## A3. Decision: should the Marginal Cost sheet and its checks change?
 Decision. Keep the single-rate schedules, because they reproduce the published P = MC points that V3 tests. Change the heading on the Marginal Cost sheet from "marginal cost rises with q, so this is the crossing" to say that each single-rate schedule is priced at one labor rate, so its marginal cost rises with q, while the farm's actual labor cost uses permanent hours first (see Audit finding A1). Add a third schedule per crop, priced permanent hours first, for information only, so the fall in marginal cost where the 720 permanent hours run out is visible. Keep the Checks sheet's "marginal cost never falls" checks on the single-rate schedules only, and note on them that the permanent-hours-first schedule is expected to fall where the 720 permanent hours run out: once for tomatoes, over two beds for carrots and mesclun.
+
+Hand check at q = 1 (V4)
+
+What I did: I calculated 2.5*36*1.10 on a calculator which = 99. Then at 1/0/0 bed count I calculated 8,800 − 880 − (tomato hours × 34.72) − 20,000, where tomato hours = 99. This yielded -$15517.28. This is because the bed itself earns $4,482.72 but the 20K fixed cost is paid no matter how much is planted and one bed doesn't cover it. That's why the farm needs many beds: 10/20/30.
+
+Result. Tomato [99 ] hours, carrot [30.74 ] hours, mesclun [45.56] hours; profit at 1 / 0 / 0 $[-15517.28 ]. The workbook shows for 1/0/0 [ 99], [0 ], [0 ] and $[-15,517.28 ]. 
+
+
+## A10. Solver from two starting mixes (V5)
+
+What I did. Ran Excel Solver (GRG Nonlinear, integer, Integer Optimality 0%) on [10/13/2026] from 0 / 0 / 0 and from 20 / 0 / 0.
+
+Result. From 0 / 0 / 0: returned: 10/20/30, $42775.16, Solver's message: "Solver found a solution". From 20 / 0 / 0: returned 10/20/30, $42775.16, solvers message: "solver found a solution". Started at 20/0/0 (profit about −$84,300, breaks the labor limit at about 12,110 hours); Solver returned 10/20/30.
+
+
+## A11. Farm Profit Lab cross-check (V6)
+
+What I did. Entered 10 / 20 / 30 into the Farm Profit Lab (farmlab.html) on 10/13/2026.
+
+Result. The Lab reports $42762.00; the workbook reports $42,775.16; difference $13.16. This fits the rounding explanation in A2.
