@@ -6,3 +6,5 @@ This folder holds the marginal-analysis capability: evaluating the incremental c
 - `model.xlsx` — the workbook implementing the spec
 
 `model.xlsx` is built from `spec.md`. Open it in Excel and start with the **README** and **Summary** tabs; the **Checks** tab tests the model against the spec's published check figures. See `docs/briefs/` for the engagement brief and `docs/decisions/` for the recommendation.
+
+Exercised in: [Perfect competition brief — farm bed-mix optimization](../../docs/briefs/perfect-competition-brief.md) (Stage 1.2: spec, build and audit; Solver confirmed 10 tomato / 20 carrot / 30 mesclun beds).

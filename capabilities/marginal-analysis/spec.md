@@ -32,6 +32,14 @@ Every input shall exist as a named input/range or equivalent named parameter in 
 | TEMP_HOURLY_RATE | 17.36 | $/hour | 
 | FIXED_SEASON_COST | 20000 | $/season | 
 
+Source of inputs. All input values are taken as stated from the "Perfect Competition" case handout parameters (https://adamwstauffer.github.io/ai-lms/case-perfect-competition.html). Three of them are rounded values:
+
+- PERMANENT_HOURLY_RATE ($34.72) equals $25,000 ÷ 720 hours ($34.7222…) rounded to the cent.
+- TEMP_HOURLY_RATE ($17.36) equals half of the unrounded permanent rate ($17.3611…) rounded to the cent.
+- CARROT_HRS_PER_WEEK_PER_BED (0.833) equals 5/6 hour (0.8333…) rounded to three decimals.
+
+The workbook uses the rounded values as stated in the handout. Audit finding A2 shows the effect of the rounding on SEASONAL_PROFIT.
+
 Derived inputs include the following: 
 
 | Name | Equation | Value |
