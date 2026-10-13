@@ -111,3 +111,14 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
 - Solver was not run; the AI could not run Excel. The decision cells hold 10 / 20 / 30 from the Enumeration sheet. I still need to run Solver (GRG Nonlinear, integer) in Excel and confirm it returns the same mix.
 - Review the workbook myself before relying on it.
 - Follow-up in the same session: the downloaded workbook first opened blank in Excel (formulas only, no saved results, and Protected View does not recalculate). The AI saved the calculated values into the file, replaced the "placeholders" line in `capabilities/marginal-analysis/README.md`, and merged the work into `main` so it is public for grading.
+
+## 2026-10-13 — Feedback sweep of 2026-10-12: spec revisions and workbook update
+- Asked an AI (Claude Code) to list the fixes in the 2026-10-12 feedback PR and explain each one. It drafted wording for the spec's Validation Rules (V1–V6), the marginal-cost definition, labor cost by crop, and audit findings A1–A3. I chose the options (single rate per crop for the marginal-cost schedule; keep the published rounded inputs), edited the spec on github.com, and committed it myself.
+- Asked the AI to update `model.xlsx` to match the revised spec. What it changed:
+  - **Checks:** rebuilt around spec rules V1–V6, with yellow cells for recording the two Solver runs and the Farm Profit Lab result by hand (V5, V6 show PENDING until filled in). Tolerances renamed `PROFIT_TOLERANCE` and `BED_TOLERANCE`. Supporting checks renumbered (O, R, C, E, L, I, H) so the IDs no longer clash with the spec's audit findings A1–A3.
+  - **Marginal Cost:** added the spec schedule at each crop's MC_RATE (tomatoes at the temporary rate, carrots and mesclun at the permanent rate) and an information-only schedule priced permanent hours first. Reworded the heading per audit finding A3. P = MC points now use the spec's "largest q" definition. Charts rebuilt: price, MC at MC_RATE, and MC permanent hours first.
+  - **Cost Structure and Summary:** added labor cost and contribution by crop at the blended rate, with check L1 confirming they sum to total labor cost.
+  - **Inputs and README sheets:** notes on the three rounded inputs, updated formula definitions, and the list of spec defects marked as now corrected in `spec.md`.
+- The AI recalculated the workbook in LibreOffice: 0 formula errors; 49 checks pass, 0 fail, 3 pending (the two Solver runs and the Lab), 4 info.
+- The AI found an error in audit finding A1, which it had drafted: marginal cost, priced permanent hours first, falls once for tomatoes but over two beds for carrots (beds 17–18) and mesclun (beds 14–15). The spec text still needs correcting.
+- **Not yet done (me):** run Solver twice and the Farm Profit Lab check, record the results on the Checks sheet, do the q = 1 hand check and the wrong-mix test myself, write audit findings A4–A11, and update the README sheet's Solver note.
