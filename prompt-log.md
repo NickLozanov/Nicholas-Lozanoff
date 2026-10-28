@@ -124,3 +124,12 @@ Run in a Claude Code session after the first review of the brief (grade 80, B-).
 - **Not yet done (me):** run Solver twice and the Farm Profit Lab check, record the results on the Checks sheet, do the q = 1 hand check and the wrong-mix test myself, write audit findings A4–A11, and update the README sheet's Solver note.
 - I ran my own checks on 2026-10-13: Excel Solver from 0 / 0 / 0 and from 20 / 0 / 0 (both returned 10 / 20 / 30, $42,775.16), the Farm Profit Lab at 10 / 20 / 30 ($42,762.00), and the q = 1 hand check. I wrote them up as audit findings in `spec.md`.
 - Follow-up in the same session: the AI recorded my Solver and Lab results on the workbook's Checks sheet (all checks now pass) and updated the README sheet's Solver note. It also added a "Source of inputs" note to `spec.md` naming the "Perfect Competition" case handout parameters and the three rounded inputs, and an "Exercised in" line to `capabilities/marginal-analysis/README.md` linking the brief.
+
+## 2026-10-28 — Stage 3: formatting the analysis and memo, building the figures
+- I wrote the Stage 3 analysis and decision memo myself in Word (`Perfect_Competition_Stage3_Working_Draft_2.docx`), using numbers from `model.xlsx`.
+- Asked an AI (Claude Code) to convert the draft's three Word tables (binding constraints, falling marginal cost, standalone crops) into Markdown tables for GitHub, and to build Figure 1 and Figure 2 from the descriptions in my draft as a downloadable Excel file.
+- What the AI did:
+  - Converted the draft to Markdown. Wording unchanged; the only edits were headings, table syntax, turning the "Tomatoes stop on marginal cost" line (a heading by mistake in Word) back into a bullet, and links between the analysis, memo and figures.
+  - Built `analysis/figures/perfect-competition-figures.xlsx` with the charts and the schedules behind them, copied from the "Marginal Cost" sheet of `model.xlsx` (no new calculations), and PNG copies of both figures for the Markdown pages.
+  - Second request in the same session: split the draft into `analysis/2026-10-28-perfect-competition-analysis.md` and `docs/decisions/2026-10-28-perfect-competition-memo.md`, updated the "Exercised in" line in `capabilities/marginal-analysis/README.md` and the engagement index in `README.md`, and merged to `main`.
+- Verified by the AI: every figure value quoted in my draft (tomato MC $8,248.11 / $9,390.17, dip $7,660.43 → $4,906.02; mesclun $2,667.21 / $2,710.59, $1,983.89, $2,420.00; carrot $1,688.37) matches the plotted data.

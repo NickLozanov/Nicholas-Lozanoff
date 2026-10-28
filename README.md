@@ -8,6 +8,6 @@ See `RESUME.md` for the full resume and `AGENTS.md` for how AI tools are used in
 
 Tracks each capability from brief to decision as engagements are worked.
 
-| Capability | Brief | Decision |
-| --- | --- | --- |
-| [Marginal Analysis](capabilities/marginal-analysis/) | pending | pending |
+| Capability | Brief | Analysis | Decision |
+| --- | --- | --- | --- |
+| [Marginal Analysis](capabilities/marginal-analysis/) | [Perfect competition brief](docs/briefs/perfect-competition-brief.md) | [Stage 3 analysis](analysis/2026-10-28-perfect-competition-analysis.md) | [Decision memo](docs/decisions/2026-10-28-perfect-competition-memo.md) |
